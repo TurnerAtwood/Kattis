@@ -1,19 +1,20 @@
 """
 /*	Turner Atwood
  *	9/22/18
- *	Almost Perfect [3.4]: (https://open.kattis.com/problems/almostperfect)
+ *	Almost Perfect [3.5]: (https://open.kattis.com/problems/almostperfect)
  */	
 """
 import math
 
-def _sum_of_divisors(num):
-	limit = int(math.sqrt(num))
-	total = 1
+def _list_of_divisors(num):
+	limit = int(math.sqrt(num))+1
+	divisor_list = set()
+	divisor_list.add(1)
 	for i in range(2, limit):
 		if num%i == 0:
-			total += i
-			total += num//i
-	return total
+			divisor_list.add(i)
+			divisor_list.add(num//i)
+	return divisor_list
 
 def main():
 	while True:
@@ -21,9 +22,9 @@ def main():
 			number = int(input())
 		except:
 			break
-		div_total = _sum_of_divisors(number)
+		divisor_list = _list_of_divisors(number)
+		div_total = sum(divisor_list)
 		div_total_diff = abs(div_total - number)
-		print(div_total)
 		if div_total_diff == 0:
 			print(f"{number} perfect")
 		elif div_total_diff <= 2:
