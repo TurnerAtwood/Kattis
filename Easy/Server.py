@@ -5,6 +5,8 @@
  */	
 """
 
+# Calculate how many of the first n elements sum to
+# 	less than the given value
 def main():
 	line = input().split(" ")
 	num = int(line[0])

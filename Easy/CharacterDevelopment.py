@@ -6,6 +6,7 @@
  */
 """
 
+# Find all relationships of size 1-n between n people
 def main():
 	num = int(input())
 	print(2**num-num-1)

@@ -1,6 +1,7 @@
 /*  Turner Atwood
  *  10/05/16
  *  Bus Numbers [2.5] (https://open.kattis.com/problems/busnumbers)
+ *  Very old, not clean at all
  */
 
 import java.util.*;

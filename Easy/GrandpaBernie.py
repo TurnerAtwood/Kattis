@@ -2,6 +2,7 @@
 /*	Turner Atwood
  *	9/30/18
  *	Grandpa Bernie [3.9]: (https://open.kattis.com/problems/grandpabernie)
+ *	Java takes too long
  */	
 """
 def main():
@@ -14,7 +15,6 @@ def main():
 			trips[place] = [year]
 		else:
 			trips[place] += [year]
-	# print(trips)
 
 	# Sort 
 	for place in trips:

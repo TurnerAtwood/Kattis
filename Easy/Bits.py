@@ -2,10 +2,11 @@
 /*	Turner Atwood
  *	10/13/18
  *	Bits [2.7] (https://open.kattis.com/problems/bits)
- *
  */
 """
 
+# Max ones in binar representation of numbers left to right:
+	# 123 --> max(bin(1), bin(12), bin(123))
 def main():
 	for _ in range(int(input())):
 		num_str = input()

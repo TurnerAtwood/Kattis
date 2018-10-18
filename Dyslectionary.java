@@ -1,6 +1,7 @@
 /*  Turner Atwood
  *  2/15/17
  *  Dyslectionary [3.1]: (https://open.kattis.com/problems/dyslectionary)
+ *  Simple Comparator implementation (old)
  */ 
 
 import java.util.*;
@@ -26,13 +27,13 @@ class Dyslectionary {
            look = "";
          }
        }
-       //print(words, max);
-       //System.out.println("------------------")
-;      Collections.sort(words, new Com());
+
+      Collections.sort(words, new Com());
        print(words, max);
        if (in.hasNext()) {
          System.out.println();
        }
+
      }
    }
 
@@ -60,28 +61,7 @@ class Dyslectionary {
       StringBuilder bs = new StringBuilder(b.toLowerCase());
       as.reverse();
       bs.reverse();
-      //System.out.println(as + " - " + bs + " = " + as.toString().compareTo(bs.toString()));
       return (as.toString().compareTo(bs.toString()));
-      /*int l1 = a.length();
-      int l2 = b.length();
-      int i = 0;
-      while (i < l1 && i < l2) {
-        char look1 = as.charAt(i);
-        char look2 = bs.charAt(i);
-        if (look1 != look2) {
-          if (look1 < look2) {
-            i = l1;
-          }
-          else {
-            i = l2;
-          }
-        }
-        i++;
-      }
-      if (i == l1) {
-        return 1;
-      }
-      return -1;*/
     }
   }
 }

@@ -59,6 +59,7 @@ def main():
 				board = _set_val(next_spot, current_val, board)
 				board = _set_val(current_spot, 0, board)
 				moves.append(next_spot)
+				
 			# NEED TO CHECK CHANGED MATRIX
 			elif next_val == current_val and next_spot not in already_combined:
 				board = _set_val(current_spot, 0, board)

@@ -6,6 +6,7 @@
 """
 import math
 
+# Generates all divisors for a given number
 def _list_of_divisors(num):
 	limit = int(math.sqrt(num))+1
 	divisor_list = set()
@@ -22,6 +23,8 @@ def main():
 			number = int(input())
 		except:
 			break
+
+		# Check the sum of the divisor list against the original number
 		divisor_list = _list_of_divisors(number)
 		div_total = sum(divisor_list)
 		div_total_diff = abs(div_total - number)

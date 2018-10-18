@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Collections;
 import java.util.Arrays;
 
+// Find all values in a list above the average
 class AboveAverage {
 	public static void main(String args[]) {
 		Scanner in = new Scanner(System.in);

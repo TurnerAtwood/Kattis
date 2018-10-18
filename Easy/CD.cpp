@@ -1,6 +1,7 @@
 /*	Turner Atwood
  *	10/13/18
  *	CD [4.2] (https://open.kattis.com/problems/cd)
+ *	Java and Python would be too slow
  */
 
 #include<iostream>

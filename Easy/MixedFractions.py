@@ -5,6 +5,7 @@
  */
 """
 
+# Turn an improper fraction into a mixed fraction
 def main():
 	while True:
 		top, bot = [int(num) for num in input().split(" ")]
