@@ -4,6 +4,8 @@
  *	All About that Base [2.9] (https://open.kattis.com/problems/allaboutthatbase)
  */
 """
+
+# Messy way to build the two maps (char->int) and (int->char)
 POSSIBLE_BASES = [str(i) for i in range(1,10)] + [chr(i) for i in range(97,123)]
 DIGIT_VALUES = {j:i+1  for i,j in enumerate(POSSIBLE_BASES)}
 DIGIT_VALUES['0'] = 0
@@ -66,10 +68,6 @@ def main():
 			print("invalid")
 		else: 
 			print("".join(found_bases))
-
-
-
-
 
 if __name__ == "__main__":
 	main()

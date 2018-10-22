@@ -13,7 +13,7 @@ def main():
 		y = total - x
 
 		# Make sure your numbers are possible and correct
-		if x+y != total or x-y != diff or y != abs(y):
+		if x-y != diff or y != abs(y):
 			print("impossible")
 		else:
 			print(x,y)
