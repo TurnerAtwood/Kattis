@@ -1,5 +1,17 @@
 # Kattis
 Practice Code written for questions on open.Kattis.com
 
-Currently, problems are just added to base folder regardless of category or language.
-Hopefully, with enough problems, they can be organized loosely based on the type of problem.
+Every file is a standalone solution to a problem n the site.
+Each program is commented with information relevant to the solution.
+The programs in the Favorites folder are programs I found the most interesting.
+
+Many of these are written during or in prparation of Mock competitions for the Competitive Programming Team.
+
+Types of algorithms implemented:
+  UnionFind
+  Prefix Tree
+  BFS
+  DFS
+  Djikstra's
+  Dynamic Programming
+  LinkedList with Quick Access (Fenwick Tree?)
