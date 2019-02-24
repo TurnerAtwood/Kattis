@@ -8,10 +8,10 @@ The programs in the Favorites folder are programs I found the most interesting.
 Many of these are written during or in prparation of Mock competitions for the Competitive Programming Team.
 
 Types of algorithms implemented:
-  UnionFind
-  Prefix Tree
-  BFS
-  DFS
-  Djikstra's
-  Dynamic Programming
-  LinkedList with Quick Access (Fenwick Tree?)
+  UnionFind,
+  Prefix Tree,
+  BFS,
+  DFS,
+  Djikstra's,
+  Dynamic Programming,
+  LinkedList with O(n^1/2) access
