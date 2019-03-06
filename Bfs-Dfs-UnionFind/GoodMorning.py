@@ -1,13 +1,14 @@
 """
 /*	Turner Atwood
  *	2/18/19
- *	Good Morning [3.0]: (https://open.kattis.com/problems/goodmorning)
- *	Finds all possible reachable numbers
+ *	Good Morning [2.9]: (https://open.kattis.com/problems/goodmorning)
+ *	Generate all possible reachable numbers (USING A BFS), then
+ **	perform a binary search over them
  */
  """
 
-# Build the adjacency lists of each button
-## More fun than hard coding each list
+# Build the adjacency lists of each button (0-9)
+## Seemed faster than hard-coding each button's neighbors
 def build_btn():
 	btn = dict()
 	btn[0] = {0}
@@ -20,10 +21,12 @@ def build_btn():
 			btn[i] = btn[i].union(btn[(i+3)%11])
 	return btn
 
-# Build every reachable number of 3 digits
+# Build every reachable number of 3 digits (easily scales much higher)
+##	Can be sped up by reducing recomputed paths of length [1, (i-1)]
 def build_possible():
 	DIGITS = 3
 	btn = build_btn()
+	# Just hold a set to have all paths of length 1-i
 	possible = {i for i in range(10)}
 	for i in range(DIGITS-1):
 		new_poss = set()
@@ -31,6 +34,8 @@ def build_possible():
 			last_digit = num%10
 			for next_digit in btn[last_digit]:
 				new_poss.add(num*10+next_digit)
+		# Add all new paths to the possible paths
+		##	This causes some recomputations
 		possible = possible.union(new_poss)
 	return sorted(possible)
 
@@ -38,6 +43,7 @@ def build_possible():
 def bin_search(look, possible):
 	low_index = 0
 	high_index = len(possible)
+	## Narrow down the choices
 	while not low_index == high_index:
 		middle_index = (high_index+low_index)//2
 		if look >= possible[middle_index]:
@@ -46,6 +52,7 @@ def bin_search(look, possible):
 			high_index = middle_index
 		if high_index - low_index < 2:
 			break
+	# Return the closest possible element to what was searched for
 	high_diff = possible[high_index] - look
 	low_diff =  look - possible[low_index]
 	if low_diff < high_diff:

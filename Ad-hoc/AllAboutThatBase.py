@@ -2,6 +2,7 @@
 /*	Turner Atwood
  *	10/1/18
  *	All About that Base [2.9] (https://open.kattis.com/problems/allaboutthatbase)
+ *	Brute Force - try every equation in every base (1-36)
  */
 """
 
@@ -57,13 +58,16 @@ def main():
 		for base in POSSIBLE_BASES:
 			num_in_decimal = [_str_base_to_decimal(base, num) for num in nums]
 			result = _perform_operation(num_in_decimal[0], num_in_decimal[1], op)
+			# At least one number not interpretable in this base
 			if -1 in num_in_decimal:
 				continue
+			# The result does not match the calculated result
 			elif not result == num_in_decimal[2]:
 				continue
 			else:
 				found_bases.append(POSSIBLE_BASES[base])
-				
+		
+		# Output
 		if not found_bases:
 			print("invalid")
 		else: 

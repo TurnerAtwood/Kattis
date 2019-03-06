@@ -1,7 +1,7 @@
 /*	Turner Atwood
  *	10/22/18
  *	Elevator Trouble [3.7] (https://open.kattis.com/problems/elevatortrouble)
- *	BFS
+ *	BFS - start at given floor and try to go up and down floors
  */
 
 import java.util.Scanner;
@@ -22,7 +22,7 @@ class ElevatorTrouble {
 		int up = in.nextInt();
 		int down = in.nextInt();
 		
-		// Initialize the array we will search over
+		// Initialize the array to search over
 		boolean[] visited = new boolean[floorNum];
 		int[] minDist = new int[floorNum];
 		for (int i = 0; i < floorNum; i++) {
@@ -55,7 +55,7 @@ class ElevatorTrouble {
 			}
 		}
 
-		// Output.
+		// Output
 		int minGoal = minDist[goal];
 		if (minGoal == MAX_VAL) {
 			System.out.println("use the stairs");

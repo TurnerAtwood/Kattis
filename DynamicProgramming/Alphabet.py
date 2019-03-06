@@ -1,7 +1,7 @@
 """
 /*	Turner Atwood
  *	10/15/18
- *	Alphabet [2.8] (https://open.kattis.com/problems/alphabet)
+ *	Alphabet [3.0] (https://open.kattis.com/problems/alphabet)
  *	Longest Increasing Subsequence [DP]
  */
 """

@@ -1,7 +1,8 @@
 """
 /*	Turner Atwood
  *	9/22/18
- *	Compound Words [1.6]: (https://open.kattis.com/problems/compoundwords)
+ *	Compound Words [1.7]: (https://open.kattis.com/problems/compoundwords)
+ *	Compute all combinations and throw them in a set
  */	
 """
 
@@ -22,8 +23,10 @@ def main():
 		word_a = words[i]
 		for j in range(i+1, word_num):
 			word_b = words[j]
+			# Add a+b and b+a
 			result.add(word_a + word_b)
 			result.add(word_b + word_a)
+	# Output
 	print("\n".join(sorted(result)))
 
 if __name__ == "__main__":

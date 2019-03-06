@@ -1,7 +1,10 @@
 """
 /*	Turner Atwood
  *	10/16/2018
- *	Alice in the Digital World [4.3] (https://open.kattis.com/problems/alicedigital)
+ *	Alice in the Digital World [3.9] (https://open.kattis.com/problems/alicedigital)
+ *	Generatethe largest possible subarray containing each instance of min_el q as min
+ **	If these got large enough, a memo array (DP) could be used to speed things up
+ **	ex: q=4 [5,4,6,3,4,4,5,2,6,5,4] -> [[5,4],[4,6],[4],[4,5],[6,5,4]]
  */
 """
 
@@ -12,7 +15,7 @@ def main():
 		line = input().split(" ")
 		min_el_locs = [-1]
 		nums = []
-		# Parst the list of ints and get all elements <=min
+		# Parse the list of ints and get all elements <= min
 		for i in range(len(line)):
 			el = int(line[i])
 			nums.append(el)

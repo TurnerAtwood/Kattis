@@ -1,7 +1,8 @@
 """
 /*	Turner Atwood
  *	9/22/18
- *	Daydreaming Stockbroker [3.2]: (https://open.kattis.com/problems/stockbroker)
+ *	Daydreaming Stockbroker [3.1]: (https://open.kattis.com/problems/stockbroker)
+ *	Ad-hoc - Decide what to do each day based off of the next day
  */	
 """
 
@@ -18,26 +19,29 @@ def main():
 		except:
 			break
 
+	# On any day: Sell if today > tomo, otherwise TRY to buy
 	for i in range(0, len(price_list)-1):
 		current_price = price_list[i]
 		next_price = price_list[i+1]
 
 		peak = current_price > next_price
+		# SELL
 		if peak and shares_held > 0:
-			# SELL
 			money += shares_held * current_price
 			shares_held = 0
 		
+		# BUY
 		if not peak and shares_held == 0:
-			# BUUUUY
 			shares_held = min(100000, money//current_price)
 			money -= current_price*shares_held
+
+	# Dump any remaining stocks
 	final_price = price_list[-1]
 	if final_price > 0:
-		# print("selling at:", final_price)
 		money += shares_held * final_price
 		shares_held = 0
 
+	# Output
 	print(money)
 
 
