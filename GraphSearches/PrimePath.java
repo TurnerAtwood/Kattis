@@ -1,7 +1,7 @@
 /*	Turner Atwood
  *	2/25/19
  *	Prime Path [2.2] : (https://open.kattis.com/problems/primepath)
- *	BFS over 4-digit prime numbers
+ *	BFS over ALL 4-digit prime numbers
  **	A neighbor of a prime is any other prime that differs by only 1 digit
  **	Likely overengineered for the given problem, but easily scalable
  */
@@ -28,6 +28,7 @@ class PrimePath {
 			queue.addLast(start);
 			distances.put(start,0);
 			while (!queue.isEmpty()) {
+				// Initial checks
 				int current = queue.pollFirst();
 				int cur_dist = distances.get(current);
 				if (current == target) {
@@ -35,12 +36,14 @@ class PrimePath {
 					break;
 				}
 
-				//Try all prime neighbors
+				//Try all prime neighbors (One digit change away)
 				int power = 1;
+				// Start at the last digit and move to the left
 				for (int i = 0; i < DIGITS; i++) {
 					int rem_i_dig = current/(power*10)*(power*10) + current%power;
-					//System.out.println(current + ": " + rem_i_dig + "+ " + power + "*j");
+					// Replace the spot by 1-9
 					for (int j = 0; j <= 9; j++) {
+						// Quick and dirty way to replace a single digit
 						int newNum = rem_i_dig + j*power;
 						if (newNum >= MAX/10 && siev[newNum] && !distances.containsKey(newNum)) {
 							distances.put(newNum, cur_dist + 1);
@@ -54,6 +57,7 @@ class PrimePath {
 	}
 
 	// Standard siev of eratosthenes
+	//	Generate all primes up to a given number
 	static void buildSiev() {
 		siev = new boolean[MAX];
 		Arrays.fill(siev, true);

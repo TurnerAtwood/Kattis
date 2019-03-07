@@ -1,7 +1,8 @@
 """
 /*	Turner Atwood
  *	9/22/18
- *	Identifying Map Tiles [1.6]: (https://open.kattis.com/problems/maptiles2)
+ *	Identifying Map Tiles [1.7]: (https://open.kattis.com/problems/maptiles2)
+ *	Trivial math
  */	
 """
 def main():

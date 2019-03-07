@@ -2,6 +2,7 @@
 /*	Turner Atwood
  *	9/5/18
  *	Un-bear-able Zoo [1.6]: (https://open.kattis.com/problems/zoo)
+ *	Classic MAP example
  */	
 """
 

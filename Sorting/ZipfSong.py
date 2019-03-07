@@ -1,8 +1,9 @@
 """
 /*	Turner Atwood
  *	10/29/18
- *	Zipf's Song [4.2] (https://open.kattis.com/problems/zipfsong)
+ *	Zipf's Song [3.9] (https://open.kattis.com/problems/zipfsong)
  *	Made as short as is reasonable in Python
+ **	Just a linear scan and sort on computed value
  */
 """
 

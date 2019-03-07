@@ -1,7 +1,12 @@
 """
 /*	Turner Atwood
  *	10/4/18
- *	Veci [1.8] (https://open.kattis.com/problems/veci)
+ *	Veci [1.9] (https://open.kattis.com/problems/veci)
+ *	Search the digits from right to left to find the first digit to swap
+ **	Swap that digit with the smallest digit to the right of it that is larger
+ **	Sort the remaining digits (ascending) and append them
+ **	ex: 827731 -> 2 is the spot : from [7,7,3,1] 3 is the best
+ **		So: [8] + [3] + [1,2,7,7] = 831277
  */
 """
 
@@ -18,7 +23,7 @@ def _find_replacement_digit(digits, spot):
 	return switch_spot, switch_val
 
 def main():
-	# Get input and make sure it isn't already sorted in reverse
+	# Get input and ensure digits arent in descending order
 	digits = [int(i) for i in input()]
 	if sorted(digits[::-1]) == digits[::-1]:
 		print(0)

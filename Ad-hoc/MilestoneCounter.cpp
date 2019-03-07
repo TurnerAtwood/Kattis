@@ -1,6 +1,6 @@
 /*	Turner Atwood
  *	11/1/18
- *	Milestone Counter [3.3] (https://open.kattis.com/problems/milestones)
+ *	Milestone Counter [3.1] (https://open.kattis.com/problems/milestones)
  *	Ad-hoc : Trying to get back into c++
  */
 

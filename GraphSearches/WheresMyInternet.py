@@ -1,8 +1,8 @@
 """
 /*	Turner Atwood
  *	9/6/18
- *	Where's My Internet?? [3.2]: (https://open.kattis.com/problems/wheresmyinternet)
- *	UNIONFIND
+ *	Where's My Internet?? [3.3]: (https://open.kattis.com/problems/wheresmyinternet)
+ *	UNIONFIND - This is old, I would never write it this way again
  */	
 """
 
@@ -35,9 +35,6 @@ def main():
 		print("Connected")
 	else:
 		print("\n".join(separate))
-	
-	# print(houses)
-	# print([i for i in range(len(houses))])
 
 
 if __name__ == "__main__":

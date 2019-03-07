@@ -1,10 +1,12 @@
 """
 /*	Turner Atwood
  *	9/8/18
- *	2048 [2.4]: (https://open.kattis.com/problems/2048)
+ *	2048 [2.3]: (https://open.kattis.com/problems/2048)
+ *	Ad-hoc - Just shift the array elements as described
  */	
 """
 
+# If the spot is valid, assign val 
 def _set_val(spot, val, board):
 	x,y = spot[0], spot[1]
 	if x in [0,1,2,3] and y in [0,1,2,3]:
@@ -12,7 +14,7 @@ def _set_val(spot, val, board):
 		return board
 	return -1
 
-# Return board[x][y] if in range, -1 otherwise
+# Return board[x][y] if spot valid, -1 otherwise
 def _get_val(spot, board):
 	x,y = spot[0], spot[1]
 	if x in [0,1,2,3] and y in [0,1,2,3]:

@@ -1,7 +1,7 @@
 /*	Turner Atwood
  *	2/19/19
  *	Reachable Roads [2.4] : (https://open.kattis.com/problems/reachableroads)
- *	UnionFind
+ *	UnionFind to find number of disjoint sets
  */
 
 import java.util.*;
@@ -28,9 +28,7 @@ class ReachableRoads {
 				union(in.nextInt(), in.nextInt());
 			}
 			// Find on each endpoint and count disjoint sets
-			
 			HashSet<Integer> groups = new HashSet<Integer>();
-
 			for (int i = 0; i < M; i++) {
 				groups.add(find(i));
 			}

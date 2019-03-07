@@ -1,7 +1,7 @@
 """
 /*	Turner Atwood
  *	9/8/18
- *	Radio Commercials [2.0]: (https://open.kattis.com/problems/commercials)
+ *	Radio Commercials [2.1]: (https://open.kattis.com/problems/commercials)
  *	MAXIMUM SUBARRAY (DP)
  */	
 """

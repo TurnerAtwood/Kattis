@@ -7,6 +7,7 @@
 """
 import math
 
+# Standard UnionFind
 class UnionFind():
 	
 	def __init__(self, size):
@@ -27,6 +28,7 @@ class UnionFind():
 		self.parents[child] = self.find(self.parents[child])
 		return self.parents[child]
 
+# Check if  two sensors are overlapping
 def _touching(sensor_a, sensor_b):
 	center_dist = math.sqrt((sensor_a[0]-sensor_b[0])**2 + (sensor_a[1]-sensor_b[1])**2)
 	radius_dist = sensor_a[2] + sensor_b[2]
@@ -34,10 +36,12 @@ def _touching(sensor_a, sensor_b):
 		return True
 	return False
 
+# Check if a sensor is touching the left bound
 def _touching_left(sensor):
 	if sensor[0] - sensor[2] < 0:
 		return True
 
+# Check if a sensor is touching the right bound
 def _touching_right(sensor):
 	if sensor[0] + sensor[2] > 200:
 		return True
@@ -50,7 +54,6 @@ def main():
 		sensor_list.append((x,y,r))
 	
 	# Add the two ends to the unionfind/ sensor
-	
 	uFind = UnionFind(num+2)
 	# Go from first to last
 	# print(uFind.parents)
@@ -70,7 +73,6 @@ def main():
 			uFind.union(num+1, i+1)
 
 		# See if the edges are connected
-		# print(cur_sensor, " -> ", uFind.parents)
 		if uFind.find(0) == uFind.find(num+1):
 			print (i)
 			break

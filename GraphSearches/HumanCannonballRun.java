@@ -1,6 +1,9 @@
 /*  Turner Atwood
  *  10/16/16
- *  Human Cannonball Run [3.4]: (https://open.kattis.com/problems/humancannonballrun)
+ *  Human Cannonball Run [3.5]: (https://open.kattis.com/problems/humancannonball)
+ *  Dijkstra's Algorithm
+ ** From a cannon you shoot towards your neighbor and run the rest
+ ** Thus, the entire graph is "connected"
  */ 
 
 import java.util.*;
@@ -11,6 +14,7 @@ public class HumanCannonballRun {
   public static void main(String args[]) {
     Scanner in = new Scanner(System.in);
     ArrayList<Node> cannons = new ArrayList<Node>();
+    // Turn input into new cannons
     cannons.add(new Node(in.nextDouble(), in.nextDouble()));
     cannons.add(new Node(in.nextDouble(), in.nextDouble()));
     last = cannons.get(1);
@@ -18,6 +22,7 @@ public class HumanCannonballRun {
     for (int i = 0; i < num; i++) {
       cannons.add(1, new Node(in.nextDouble(), in.nextDouble()));
     }
+    // Connected every cannon to every other cannon
     num += 2;
     for (int i = 0; i < num; i++) {
       Node look = cannons.get(i);
@@ -36,10 +41,12 @@ public class HumanCannonballRun {
         }
       }
     }
+    // Run dijkstra and print the result
     System.out.println(dijkstra(cannons.get(0), last));
 
   }
 
+  // Vanilla Dijkstra's algorithm
   private static double dijkstra(Node a, Node b) {
     PriorityQueue<Node> pq = new PriorityQueue<>();
     a.time = 0;
@@ -47,6 +54,7 @@ public class HumanCannonballRun {
     while (!pq.isEmpty()) {
       Node c = pq.poll();
       c.visited = true;
+      // Endpoint
       if (c == b) {
         return b.time;
       }
@@ -54,6 +62,7 @@ public class HumanCannonballRun {
         Node d = c.neighbors.get(i);
         double thisTime = c.times.get(i);
         double newTime = c.time + thisTime;
+        // Remove the node from pq and add it back with the better time
         if (newTime < d.time) {
           pq.remove(d);
           d.time = newTime;
@@ -64,6 +73,7 @@ public class HumanCannonballRun {
     return -1;
   }
 
+  // Node class to compare nodes using their time
   public static class Node implements Comparable<Node>{
     List<Node> neighbors = new ArrayList<Node>();
     List<Double> times = new ArrayList<Double>();
@@ -78,8 +88,7 @@ public class HumanCannonballRun {
       time = Double.MAX_VALUE;
     }
     @SuppressWarnings("unchecked")
-    public int compareTo(Node tht) {
-      Node that = tht;
+    public int compareTo(Node that) {
       double ret = this.time - that.time;
       if (ret < 0) {
         return -1;

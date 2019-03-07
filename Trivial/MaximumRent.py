@@ -1,8 +1,9 @@
 """
 /*	Turner Atwood
  *	10/16/18
- *	Maximum Rent [3.1] (https://open.kattis.com/problems/maximumrent)
- *	Python 3 was too slow, but Python2 is fine
+ *	Maximum Rent [2.8] (https://open.kattis.com/problems/maximumrent)
+ *	Brute force try all points along the line
+ **	Python 3 was too slow, but Python2 is fine
  */
 """
 
@@ -17,6 +18,7 @@ def main():
 		x = m-y
 		if 2*x < (s-y):
 			break
+		# This will be at the intersection
 		max_rent = max(max_rent, a*x+b*y)
 	print max_rent
 

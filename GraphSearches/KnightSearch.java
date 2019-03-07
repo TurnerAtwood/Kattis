@@ -2,6 +2,7 @@
  *	10/31/18
  *	Knight Search [3.1] (https://open.kattis.com/problems/knightsearch)
  *	Standard DFS (Started from multiple locations)
+ **	Have to follow the specified path (neighbors found during graph)
  */
 
 import java.io.BufferedReader;
@@ -74,7 +75,7 @@ class KnightSearch {
 		return neighbors;
 	}
 
-	// See if spot2 is a knight move away from spot1
+	// See if spot2 is one knight move away from spot1
 	static boolean isNeighbor(int spot1, int spot2) {
 		// Make sure the spots are on the board
 		if (spot1 < 0 || spot1 >= N*N || spot2 < 0 || spot2 >= N*N) {

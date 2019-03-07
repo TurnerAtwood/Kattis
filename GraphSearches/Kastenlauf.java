@@ -1,6 +1,8 @@
 /*  Turner Atwood
  *  10/15/16
- *  Kastenlauf [3.7]: (https://open.kattis.com/problems/kastenlauf)
+ *  Kastenlauf [3.8]: (https://open.kattis.com/problems/kastenlauf)
+ *  DFS - Cities connected if within 1000 of each other
+ ** (Written in 2016) Unnecessary Point/Node class 
  */ 
 
 import java.util.*;
@@ -37,6 +39,7 @@ public class Kastenlauf {
       }
     }
   }
+    // Actually a DFS
     public static boolean findEnd(Node a) {
       a.visited = true;
       if (a.equals(map.get(num-1))) {

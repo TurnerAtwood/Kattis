@@ -1,7 +1,7 @@
 """
 /*	Turner Atwood
- *	2/??/19
- *	Palindromic Password [3.5] : (https://open.kattis.com/problems/palindromicpassword)
+ *	2/25/19
+ *	Palindromic Password [3.4] : (https://open.kattis.com/problems/palindromicpassword)
  *	Extremely basic BFS
  */
 """
@@ -14,6 +14,7 @@ def main():
 		# Try num += i for i in {0,1,2,...}
 		while (True):
 			down = num - i
+			# Must stay 6 digits
 			if down >= 100000 and isPalindrome(down):
 				print(down)
 				break

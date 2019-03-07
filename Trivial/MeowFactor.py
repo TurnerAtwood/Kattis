@@ -1,8 +1,8 @@
 """
 /*	Turner Atwood
  *	10/16/18
- *	Meow Factor [3.8] (https://open.kattis.com/problems/meowfactor)
- *	Slight twist on finding all factors
+ *	Meow Factor [3.5] (https://open.kattis.com/problems/meowfactor)
+ *	Ad-hoc - Slight twist on finding all factors
  */
 """
 
