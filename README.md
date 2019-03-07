@@ -14,4 +14,4 @@ Types of algorithms implemented:
   DFS,
   Djikstra's,
   Dynamic Programming,
-  LinkedList with O(n^1/2) access
+  Basic Segment Tree.
