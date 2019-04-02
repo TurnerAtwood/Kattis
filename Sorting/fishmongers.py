@@ -1,3 +1,11 @@
+"""
+/*	Turner Atwood
+ *	4/2/19
+ *	Fishmongers [4.0] : (https://open.kattis.com/problems/fishmongers)
+ *	Sort both lists and so a linear scan on both
+ */
+"""
+
 from sys import stdin
 
 def main():
