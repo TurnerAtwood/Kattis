@@ -5,131 +5,96 @@
  **	Then generate all of the possible numbers from the given digits
  **	Finally, check to see how many of the possibles are prime
  */
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+#include <queue>
+#include <algorithm>
 
-# include <iostream>
-# include <vector>
-# include <unordered_set>
-# include <algorithm>
 using namespace std;
 
-static int LIMIT = 10000000;
-
-bool* makeSiev();
-vector<int>* makePossible(string);
-int countInstances(int, int);
+static int MAX = 10000000;
 
 int main() {
-	int C;
-	cin >> C;
-	bool* siev = makeSiev();
-	for (int z = 0; z < C; z++) {
-		string number;
-		cin >> number;
-		vector<int>* possible = makePossible(number);
+	// Sieve of Eratosthenes
+	bool* sieve = new bool[MAX];
+	sieve[0] = false;
+	sieve[1] = false;
+	for (int i = 2; i < MAX; i++) {
+		sieve[i] = true;
+	}
 
-		//cout << "Possible:\n";
-		int count = 0;
-		for (int i = 0; i < possible->size(); i++) {
-			//printf("%d, ", possible->at(i));
-			if (siev[possible->at(i)]) {
-				count++;
+	for (int i = 2; i < 3180; i++) {
+		if (sieve[i]) {
+			int j = i*i; 
+			while (j < MAX) {
+				sieve[j] = false;
+				j += i;
 			}
 		}
-		cout << count << endl;
 	}
-}
 
-// One of the fastest way to generate all primes in a given range
-bool* makeSiev() {
-	bool* result = new bool[LIMIT];
-	result[0] = false;
-	result[1] = false;
-	for (int i = 2; i < LIMIT; i++) {
-		result[i] = true;
-	}
-	int i = 1;
-	while (i*i < LIMIT) {
-		i += 1;
-		if (!result[i]) {
-			continue;
+	// INPUT
+	int cases;
+	cin >> cases;
+	for (int z = 0; z < cases; z++) {
+		// Get the digits into a vector of ints
+		string line;
+		cin >> line;
+		vector<int> digits;
+		int dig_num = line.size();
+		for (int i = 0; i < dig_num; i++) {
+			digits.push_back(line.at(i) - '0');
 		}
-		for (int j = i*i; j <= LIMIT; j += i) {
-			result[j] = false;
-		}
-	}
-	return result;
-}
 
-// This is a ton of data structure manipulation - couldn't see how to use next_permutation
-// Essentially just build all numbers of length 1,2,...,n, where n is the number of digits given
-// Use vectors to store the final & intermediate sets of numbers and a set to prevent duplicates
-vector<int>* makePossible(string number) {
-	// Initalizeing most of the variables used
-	unordered_set<int>* seen = new unordered_set<int>();
-	int size = number.size();
-	int num = stoi(number);
-	vector<int>* result = new vector<int>();
-	vector<int>* last_result = new vector<int>();
-	int digits[7];
-	int dig_freq[] = {0,0,0,0,0,0,0,0,0,0};
-	int tmp_num = num;
-	// Build the array of digits (also paths of length 1)
-	for (int i = 0; i < size; i++) {
-		int digit = tmp_num%10;
-		if (seen->count(digit) == 0 && digit != 0) {
-			result->insert(result->end(), digit);
-			last_result->insert(last_result->end(), digit);
-		}
-		digits[i] = digit;
-		seen->insert(digit);
-		dig_freq[digit] += 1;
-		tmp_num = tmp_num/10;
-	}
+		unordered_set<int> primes;
+		unordered_set<int> checked;
+		checked.insert(0);
 
-	// Build the paths of length 2 - n
-	for (int i = 1; i < size; i++) {
-		
-		// This stores all numbers generated of length i
-		vector<int>* tmp_result = new vector<int>();
+		// Do a BFS over the digits, checking at each step if they are prime
+		// <used list, number>
+		queue<vector<int> > q;
+		vector<int> cur;
+		vector<int> neigh;
+		int cur_num;
+		int try_num;
 
-		// Try every number of length i-1 with every digit available
-		for (int j = 0; j < last_result->size(); j++) {
-			int number = last_result->at(j);
-			for (int k = 0; k < size; k++) {
-				int digit = digits[k];
-				int available = dig_freq[digit];
-				int used = countInstances(number, digit);
-				int new_number = number*10 + digit;
-				// Don't try to use more digits then you have, and do not repeat numbers
-				if (used < available && seen->count(new_number) == 0) {
-					tmp_result->insert(tmp_result->end(), new_number);
-					seen->insert(new_number);
+		cur.push_back(0);
+		q.push(cur);
+		while (!q.empty()) {
+			cur = q.front();
+			q.pop();
+
+			cur_num = cur.back();
+			//cout << cur_num << endl;
+			cur.pop_back();
+
+			// Try to add all unused digits to the current number
+			for (int i = 0; i < dig_num; i++) {
+				// Index has been used
+				if (find(cur.begin(), cur.end(), i) != cur.end()) {
+					continue;
 				}
+				try_num = cur_num * 10 + digits[i];
+				// Number has been checked already (on shorter path)
+				if (checked.count(try_num)) {
+					continue;
+				}	
+
+				checked.insert(try_num);
+				if (sieve[try_num]) {
+					primes.insert(try_num);
+					//cout << try_num << endl;
+				}
+
+				neigh = cur;
+				neigh.push_back(i);
+				neigh.push_back(try_num);
+				q.push(neigh);
+
 			}
 		}
 
-		// Put the paths of length i into the temp vector to use in the next loop
-		last_result = new vector<int>();
-		last_result->insert(last_result->end(), tmp_result->begin(), tmp_result->end());
-		// Store all of the paths of length i generated in the final result
-		result->insert(result->end(), tmp_result->begin(), tmp_result->end());
+		cout << primes.size() << endl;
 	}
-
-	return result;
-}
-
-// Used to count how many times digits appears in the given number
-int countInstances(int number, int digit) {
-	int count = 0;
-	if (digit > 9 || digit < 0) {
-		cout << "DON'T DO THAT.";
-		return 0;
-	}
-	while (number > 0) {
-		if (number%10 == digit) {
-			count++;
-		}
-		number = number / 10;
-	}
-	return count;
 }

@@ -1,42 +1,36 @@
 /*	Turner Atwood
  *	10/13/18
- *	CD [4.2] (https://open.kattis.com/problems/cd)
- *	Java and Python would be too slow
+ *	CD [4.2] https://open.kattis.com/problems/cd
+ *	Ad-hoc using a set
  */
 
-#include<iostream>
-#include<unordered_set>
 using namespace std;
 
+#include <iostream>
+#include <unordered_set>
 
 int main() {
-	while(true) {
-		int num1;
-		int num2;
-		cin >> num1;
-		cin >> num2;
-		if (num1 == 0 && num2 == 0) {
-			break;
+	int N,M;
+	cin >> N >> M; 
+	unordered_set<int> jack;
+	int CD;
+	while(N != 0 and M != 0) {
+		int count = 0;
+		
+		jack = unordered_set<int>();
+		for (int i = 0; i < N; i ++) {
+			cin >> CD;
+			jack.insert(CD);
 		}
-
-		unordered_set<int> jack = unordered_set<int>();
-
-		for (int i = 0; i < num1; i++) {
-			int new_cd;
-			cin >> new_cd;
-			jack.insert(new_cd);
-		}
-
-		int count;
-		count = 0;
-		for (int i = 0; i < num1; i++) {
-			int new_cd;
-			cin >> new_cd;
-			if (jack.count(new_cd) == 1) {
+		
+		for (int i = 0; i < N; i ++) {
+			cin >> CD;
+			if (jack.count(CD)) {
 				count++;
 			}
-		} 
-		cout << count;
-		cout << "\n";
+		}
+		cout << count << endl;
+
+		cin >> N >> M;
 	}
 }
