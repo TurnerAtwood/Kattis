@@ -1,7 +1,8 @@
 # Kattis
 Practice Code written for questions on open.Kattis.com
+My account: https://open.kattis.com/users/turner-atwood
 
-Every file is a standalone solution to a problem n the site.
+Every file is a standalone solution to a problem on the site.
 Each program is commented with information relevant to the solution.
 The programs in the Favorites folder are programs I found the most interesting.
 
