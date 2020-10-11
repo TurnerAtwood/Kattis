@@ -1,11 +1,17 @@
+/*  Turner Atwood
+ *  10/10/20
+ *  Barshelf [8.9?] https://open.kattis.com/problems/barshelf
+ *  BST to both add elements and get the sum of the number
+ ** of elements <= any number in log(n) time.
+ ** Find the middles of messy trios using two BSTs.
+ */
+
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
 #include <vector>
 #include <stack>
 #include <unordered_set>
-
-#define printf __mingw_printf
 
 using namespace std;
 
@@ -15,13 +21,6 @@ struct tup{
     int left;
     int right;
 };
-
-void arrPrint(vector<int> arr) {
-    for (int i = 0; i < arr.size(); i++) {
-        printf("%d, ", arr[i]);
-    }
-    printf("\n");
-}
 
 // BST class for remembering left counts (data comes sorted)
 class BST {
@@ -82,7 +81,6 @@ class BST {
                 break;
             }
         }
-        // printf("[%d]: %d -> %d\n", target, best_index, tree[best_index]);
         return best_index;
     }
 
@@ -129,7 +127,6 @@ class BST {
     bool valid_index(int ind) {
          return (ind >= 0 && ind < m && tree[ind] != 0);
     }
-    
 };
 
 int main() {
@@ -177,16 +174,11 @@ int main() {
     }
 
 
-    // Count up the middles
+    // Count up the pairs using the middles
     long total = 0;
     for (int i = 0; i < n; i++) {
         total += half_rights[i] * double_lefts[i];
-        printf("(%d) %ld\n", i, total);
-        if (total < 0) {
-            break;
-        }
     }
-
     printf("%ld\n", total);
 }
 
